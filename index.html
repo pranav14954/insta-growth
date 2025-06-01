@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Insta Growth 📈</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #4169e1;
+      margin: 0;
+      padding: 0;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      color: black;
+      max-width: 400px;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 12px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4169e1;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #365dc9;
+    }
+    #extraInput {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Insta Growth 📈</h1>
+  <p>Order Instagram Followers or Views via WhatsApp</p>
+
+  <div class="container">
+    <form id="orderForm">
+      <input type="text" id="fullName" placeholder="Full Name" required />
+
+      <select id="packageSelect" onchange="toggleInput()" required>
+        <option value="">-- Select Package --</option>
+        <optgroup label="Followers">
+          <option value="100 followers - ₹20">100 followers - ₹20</option>
+          <option value="300 followers - ₹60">300 followers - ₹60</option>
+          <option value="500 followers - ₹80">500 followers - ₹80</option>
+          <option value="1000 followers - ₹150">1000 followers - ₹150</option>
+        </optgroup>
+        <optgroup label="Views">
+          <option value="1000 views - ₹2">1000 views - ₹2</option>
+          <option value="3000 views - ₹6">3000 views - ₹6</option>
+          <option value="5000 views - ₹10">5000 views - ₹10</option>
+          <option value="10000 views - ₹20">10000 views - ₹20</option>
+          <option value="50000 views - ₹60">50000 views - ₹60</option>
+          <option value="100000 views - ₹100">100000 views - ₹100</option>
+        </optgroup>
+      </select>
+
+      <input type="text" id="extraInput" placeholder="" required />
+
+      <button type="submit">Place Order</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleInput() {
+      const packageValue = document.getElementById('packageSelect').value;
+      const extraInput = document.getElementById('extraInput');
+
+      if (packageValue.includes('followers')) {
+        extraInput.placeholder = 'Instagram Username';
+        extraInput.name = 'Instagram Username';
+        extraInput.style.display = 'block';
+      } else if (packageValue.includes('views')) {
+        extraInput.placeholder = 'Reel Link';
+        extraInput.name = 'Reel Link';
+        extraInput.style.display = 'block';
+      } else {
+        extraInput.style.display = 'none';
+      }
+    }
+
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value;
+      const pack = document.getElementById('packageSelect').value;
+      const detail = document.getElementById('extraInput').value;
+
+      const message = `Hi, I want to place an order:%0aName: ${name}%0aPackage: ${pack}%0aDetails: ${detail}`;
+      window.open("https://wa.me/919359439116?text=" + message, '_blank');
+    });
+  </script>
+</body>
+</html>
